@@ -9,7 +9,7 @@
 ▣ Objetivo:
 ▪ Emergencial:
  » Reconhecimento facial em caso de acidentes que impossibilitam o acesso de pessoas com facilidade ou segurança.
-   → Serão implemetados softwares de reconhecimento facial e reconhecimento de partes do corpo humano para que possa ter uma precisão extremamente alta, onde rostos serão enviados para a equipe que utiliza o robô e armazenados em um banco de dados.
+  → Serão implemetados softwares de reconhecimento facial e reconhecimento de partes do corpo humano para que possa ter uma precisão extremamente alta, onde rostos serão enviados para a equipe que utiliza o robô e armazenados em um banco de dados.
 ▪ Exploratório:
  » Locomoção em locais de difícil acesso.
   → Exemplo: Corpos celestes, áreas inabtáveis, locais subterrâneos.
