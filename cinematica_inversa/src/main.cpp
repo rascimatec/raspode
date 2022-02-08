@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <Servo.h> //Servo library
-#include <math.h>
 
 #define tibia 145.00
 #define femur 95.00
@@ -26,7 +25,7 @@ float x,y,z,H,L;
     return round(angle,1)*/
 
 
-/*ik(){
+/*cinematica_inversa(){
    // Coxa, Femur e Tibia são as medidas de comprimento
    // x, y e z são as coordenadas
    //alpha, beta, gama são os ângulos das juntas
@@ -37,11 +36,28 @@ float x,y,z,H,L;
    L = sqrt(pow(H,2) + pow(z,2));
 
    alpha = (atan(x/y))*(180.00/PI); //angulo do servo.coxa
+   //caso o valor da tangente seja positivo não se pode distinguir se o ângulo é do primeiro ou terceiro quadrante e se for negativo, se é do segundo ou quarto quadrante
+   
    gama = ((acos((pow(femur,2) + pow(tibia,2) - pow(L,2))/(2*femur*tibia)))*(180.00/PI)); //angulo do servo.tibia
    beta1 = (acos((pow(femur,2) + pow(L,2) - pow(tibia,2))/(2*femur*L)))*(180.00/PI); 
    beta = (alpha + beta1);//angulo do servo.femur
 
 }*/
+
+/*cinematica_direta(){
+
+//Coxa é o comprimento do elo que representa a coxa da perna do hexápode;
+//Fémur é o comprimento do elo que representa o fémur da perna do hexápode;
+//Tíbia é o comprimento do elo que representa a tíbia da perna do hexápode;
+//Ac representa a altura do corpo do robô ao solo;
+//γ é o valor angular da junta rotacional que representa a anca do hexápode;
+//α é o valor angular da junta rotacional que representa o joelho do hexápode;
+//β é o valor angular da junta rotacional que representa o tornozelo do hexápode.
+
+  x= (coxa+femur*cos(alpha)+tibia*cos(alpha+beta))*cos(gama)
+  y= (coxa+femur*cos(alpha)+tibia*cos(alpha+beta))*sen(gama)
+  z= Ac+femur*sen(alpha)+tibia*sen(alpha+beta) 
+  }*/
 
 void setup() {
   // put your setup code here, to run once:
@@ -55,7 +71,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   Serial.println("30");// You can display on the serial the signal value
   //for(pos=0;pos<=180;pos++){
-    servotibia.write(1); //Turn clockwise at high speed
+    servocoxa.write(40); //Turn clockwise at high speed
   //}
   //for(pos=180;pos>=0;pos--){
     //servotibia.write(pos); //Turn clockwise at high speed
